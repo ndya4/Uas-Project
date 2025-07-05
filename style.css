@@ -1,0 +1,644 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Poppins", Arial, Helvetica, sans-serif;
+}
+
+.home-text h1,
+.nia-title {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+}
+
+body {
+    background-image: url('https://i.pinimg.com/736x/3c/7a/fc/3c7afc1b68c0f8cc367dd9d0f1f383de.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(2px);
+    z-index: -1;
+}
+
+
+.navbar {
+    background: #fff;
+    padding: 20px 0;
+    box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    transition: box-shadow 0.3s;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center;
+    gap: 30px;
+    list-style: none;
+}
+
+.navbar a {
+    text-decoration: none;
+    color: #444;
+    font-weight: bold;
+    font-size: 1.1rem;
+    padding: 8px 18px;
+    border-radius: 20px;
+    transition: color 0.3s, background 0.3s, box-shadow 0.3s;
+}
+
+.navbar a:hover,
+.navbar a.active {
+    color: #fff;
+    background: #8e44ad;
+    box-shadow: 0 2px 8px #8e44ad33;
+}
+
+/* Halaman */
+.page {
+    display: none;
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.5s, transform 0.5s;
+    padding: 60px 20px;
+    max-width: 1000px;
+    margin: auto;
+}
+
+.page.active {
+    display: block;
+    opacity: 1;
+    transform: translateY(0);
+    animation: fadeIn 0.7s;
+}
+
+.section-title-bg {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 40px;
+}
+
+.section-title-bg h2 {
+    background: linear-gradient(135deg, #8e44ad, #cbb1df);
+    color: #fff;
+    padding: 16px 32px;
+    border-radius: 16px;
+    font-size: 2.5rem;
+    box-shadow: 0 4px 16px rgba(142, 68, 173, 0.3);
+    text-align: center;
+    animation: fadeIn 1s;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* HOME */
+#home::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+
+.home-content {
+    text-align: center;
+    animation: fadeIn 1s;
+}
+
+.home-flex {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+}
+
+.home-flex .chibi-img {
+    max-width: 220px;
+    width: 40vw;
+    min-width: 120px;
+}
+
+.home-text h1 {
+    font-size: 3rem;
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    color: #000000;
+    margin-bottom: 18px;
+}
+
+.home-text p {
+    font-size: 1.5rem;
+    color: #45245e;
+    font-weight: 500;
+}
+
+@media (max-width: 700px) {
+    .home-flex {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
+
+    .home-text h1 {
+        font-size: 2.2rem;
+    }
+
+    .home-text p {
+        font-size: 1.1rem;
+    }
+}
+
+/* Kotak sosial media */
+.social-floating-box {
+    position: absolute;
+    top: -14px;
+    right: -14px;
+    background: rgba(142, 68, 173, 0.9);
+    padding: 10px 16px;
+    border-radius: 16px;
+    display: flex;
+    gap: 16px;
+    align-items: center;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+    z-index: 10;
+}
+
+/* Icon style */
+.social-floating-box a img {
+    width: 20px;
+    height: 20px;
+    transition: transform 0.3s ease, filter 0.3s ease;
+    filter: brightness(0) invert(1);
+}
+
+.social-floating-box a:hover img {
+    transform: scale(1.2);
+    filter: brightness(1.5);
+}
+
+.home-card {
+    background: rgba(255, 255, 255, 0.85);
+    backdrop-filter: blur(10px);
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(72, 36, 112, 0.12), 0 2px 8px 0 rgba(142, 68, 173, 0.08);
+    padding: 40px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    max-width: 700px;
+    margin: 40px auto 0 auto;
+    position: relative;
+}
+
+@media (max-width: 700px) {
+    .home-card {
+        flex-direction: column;
+        padding: 24px 10px;
+        gap: 20px;
+    }
+}
+
+.chibi-img {
+    max-width: 200px;
+    margin-bottom: 20px;
+    border-radius: 50%;
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+/* ABOUT */
+.about-content {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.about-btn {
+    margin-top: 24px;
+    padding: 12px 32px;
+    background: #8e44ad;
+    color: #fff;
+    border: none;
+    border-radius: 24px;
+    font-size: 1.1rem;
+    font-family: 'Poppins', Arial, Helvetica, sans-serif;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+}
+
+.about-btn:hover {
+    background: #45245e;
+    transform: translateY(-2px) scale(1.04);
+}
+
+.about-card {
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(72, 36, 112, 0.12), 0 2px 8px 0 rgba(142, 68, 173, 0.08);
+    padding: 40px 32px;
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    overflow: visible;
+    /* agar gambar bisa keluar */
+}
+
+.image {
+    flex: 1 1 40%;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-width: 250px;
+}
+
+.image img {
+    max-height: 400px;
+    z-index: 3;
+    position: relative;
+    transform: translateY(-40px);
+}
+
+.circle.main {
+    position: absolute;
+    width: 250px;
+    height: 250px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #cbb1df 0%, #8e44ad 100%);
+    z-index: 1;
+    left: 50%;
+    top: 40px;
+    transform: translateX(-50%);
+}
+
+.circle.small.one {
+    position: absolute;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    background: #f8bbd0;
+    left: 70%;
+    top: 10px;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+.circle.small.two {
+    position: absolute;
+    width: 35px;
+    height: 35px;
+    border-radius: 50%;
+    background: #b3e5fc;
+    left: 20%;
+    top: 180px;
+    z-index: 0;
+    opacity: 0.7;
+}
+
+@media (max-width: 800px) {
+    .about-card {
+        flex-direction: column;
+        padding: 24px 10px;
+        gap: 20px;
+    }
+
+    .image img {
+        max-height: 220px;
+        transform: translateY(-20px);
+    }
+
+    .circle.main {
+        width: 160px;
+        height: 160px;
+        top: 20px;
+    }
+
+    .circle.small.one {
+        width: 40px;
+        height: 40px;
+        left: 75%;
+        top: 0;
+    }
+
+    .circle.small.two {
+        width: 25px;
+        height: 25px;
+        left: 10%;
+        top: 110px;
+    }
+}
+
+.text {
+    flex: 1 1 50%;
+}
+
+.title-kanji {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 20px;
+    min-height: 70px;
+}
+
+.kanji {
+    font-size: 4.5em;
+    color: #8e44ad;
+    opacity: 0.22;
+    letter-spacing: 0.1em;
+    font-family: 'Bebas Neue', 'Poppins', Arial, sans-serif;
+    z-index: 1;
+    position: relative;
+    line-height: 1;
+    margin-bottom: 0;
+    top: -18px;
+}
+
+.nia-title {
+    font-family: 'Bebas Neue', Impact, sans-serif;
+    font-size: 3em;
+    color: #222;
+    position: absolute;
+    left: 0;
+    top: 22px;
+    z-index: 2;
+    line-height: 1;
+}
+
+.text h3 {
+    color: #8e44ad;
+    margin-top: 20px;
+}
+
+.text p {
+    font-size: 1rem;
+    line-height: 1.6;
+}
+
+.skills-card {
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px 0 rgba(72, 36, 112, 0.12), 0 2px 8px 0 rgba(142, 68, 173, 0.08);
+    padding: 40px 32px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 32px;
+    max-width: 900px;
+    margin: 40px auto 0 auto;
+    overflow: visible;
+}
+
+.skills-card h3 {
+    font-size: 1.8rem;
+    color: #8e44ad;
+    text-align: center;
+    margin-bottom: 8px;
+}
+
+.skills-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill-icon {
+    width: 64px;
+    height: 64px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(142, 68, 173, 0.15);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.3s;
+    position: relative;
+}
+
+.skill-icon img {
+    width: 36px;
+    height: 36px;
+    object-fit: contain;
+}
+
+.skill-icon:hover {
+    transform: scale(1.15);
+    box-shadow: 0 8px 24px rgba(142, 68, 173, 0.25);
+}
+
+/* Pop-up tetap */
+.skill-popup {
+    position: absolute;
+    top: -10px;
+    left: 70px;
+    background: #fff;
+    border: 2px solid #8e44ad;
+    border-radius: 12px;
+    padding: 8px 16px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: #45245e;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 4px;
+    white-space: nowrap;
+    z-index: 999;
+}
+
+.skill-popup.show {
+    display: flex;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+
+/* WORK & CONTACT */
+#work h2,
+#contact h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+    animation: fadeIn 1s;
+}
+
+#work p,
+#contact p {
+    text-align: center;
+    font-size: 1.1rem;
+}
+
+#contact a {
+    color: #8e44ad;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s;
+}
+
+#contact a:hover {
+    color: #45245e;
+    text-decoration: underline;
+}
+
+.work-card {
+    background: #fff;
+    border-radius: 32px;
+    box-shadow: 0 8px 32px rgba(72, 36, 112, 0.12), 0 2px 8px rgba(142, 68, 173, 0.08);
+    padding: 40px 32px;
+    margin: 40px auto;
+    max-width: 900px;
+}
+
+.work-card h3 {
+    font-size: 1.8rem;
+    color: #45245e;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.poetry-gallery {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 20px;
+    justify-items: center;
+}
+
+.poetry-gallery img {
+    width: 100%;
+    max-width: 250px;
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+}
+
+.poetry-gallery img:hover {
+    transform: scale(1.05);
+}
+
+.coming-soon {
+    background: #f9f2ff;
+    border: 2px dashed #8e44ad;
+    padding: 24px;
+    text-align: center;
+    border-radius: 16px;
+    color: #8e44ad;
+    font-weight: 600;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 30px auto 0 auto;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group label {
+    font-weight: 600;
+    color: #45245e;
+    margin-bottom: 6px;
+}
+
+.contact-form input,
+.contact-form textarea {
+    padding: 12px 16px;
+    border: 2px solid #cbb1df;
+    border-radius: 12px;
+    font-size: 1rem;
+    font-family: 'Poppins', sans-serif;
+    resize: vertical;
+    background: #fff;
+    transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.contact-form input:focus,
+.contact-form textarea:focus {
+    border-color: #8e44ad;
+    box-shadow: 0 0 6px rgba(142, 68, 173, 0.3);
+    outline: none;
+}
+
+.send-btn {
+    background: #8e44ad;
+    color: #fff;
+    padding: 12px 24px;
+    border: none;
+    border-radius: 24px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background 0.3s, transform 0.2s;
+    align-self: flex-end;
+}
+
+.send-btn:hover {
+    background: #45245e;
+    transform: translateY(-2px);
+}
+
+
+/* Responsive */
+@media (max-width: 800px) {
+    .about-content {
+        flex-direction: column;
+        gap: 20px;
+        align-items: flex-start;
+    }
+
+    .image,
+    .text {
+        flex: 1 1 100%;
+        width: 100%;
+    }
+
+    .nia-title {
+        font-size: 2.5em;
+    }
+}
+
+@media (max-width: 700px) {
+    .social-floating-box {
+        top: 8px;
+        right: 8px;
+        padding: 8px 12px;
+        gap: 12px;
+        border-radius: 12px;
+        background: rgba(142, 68, 173, 0.95);
+    }
+
+    .social-floating-box a img {
+        width: 20px;
+        height: 20px;
+    }
+}
