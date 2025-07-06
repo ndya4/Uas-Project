@@ -34,12 +34,12 @@ if (chibi) {
         chibi.style.opacity = "0";
         setTimeout(() => {
             // Ganti gambar pose setelah fade out
-            if (pose === 1) {
+            if (pose === 2) {
+                chibi.src = "img/nia-chibi-pose2.png";
+                pose = 1;
+            } else {
                 chibi.src = "img/nia-chibi-pose2.png";
                 pose = 2;
-            } else {
-                chibi.src = "img/nia-chibi.png";
-                pose = 1;
             }
             // Fade in
             chibi.style.opacity = "1";
@@ -54,19 +54,22 @@ if (chibi) {
 // Interaktif: Skill popup
 document.querySelectorAll('.skill-icon').forEach(icon => {
     icon.addEventListener('click', () => {
-        // Tutup semua popup dulu
-        document.querySelectorAll('.skill-popup').forEach(p => p.classList.remove('show'));
+        if (window.innerWidth > 768) {
+            // Tutup semua popup dulu
+            document.querySelectorAll('.skill-popup').forEach(p => p.classList.remove('show'));
 
-        // Tampilkan popup milik ikon yang diklik
-        const popup = icon.querySelector('.skill-popup');
-        if (popup) {
-            popup.classList.add('show');
+            // Tampilkan popup milik ikon yang diklik
+            const popup = icon.querySelector('.skill-popup');
+            if (popup) {
+                popup.classList.add('show');
 
-            // Sembunyikan otomatis setelah 2.5 detik
-            clearTimeout(popup.timer);
-            popup.timer = setTimeout(() => {
-                popup.classList.remove('show');
-            }, 2500);
+                // Sembunyikan otomatis setelah 2.5 detik
+                clearTimeout(popup.timer);
+                popup.timer = setTimeout(() => {
+                    popup.classList.remove('show');
+                }, 2500);
+            }
         }
     });
 });
+

@@ -453,27 +453,35 @@ body::before {
 /* Pop-up tetap */
 .skill-popup {
     position: absolute;
-    top: -10px;
-    left: 70px;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
     background: #fff;
     border: 2px solid #8e44ad;
     border-radius: 12px;
     padding: 8px 16px;
-    font-size: 0.85rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: #45245e;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-    display: none;
+    display: flex;
     flex-direction: column;
     align-items: center;
     gap: 4px;
     white-space: nowrap;
     z-index: 999;
+
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease;
 }
 
 .skill-popup.show {
-    display: flex;
-    animation: fadeIn 0.3s ease-in-out;
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transform: translateX(-50%) translateY(4px);
 }
 
 
@@ -641,4 +649,62 @@ body::before {
         width: 20px;
         height: 20px;
     }
+}
+/* RESPONSIVE NAVBAR UNTUK MOBILE */
+@media (max-width: 768px) {
+  nav ul {
+    display: none; /* Sembunyikan menu navbar di mobile */
+  }
+
+  .hamburger {
+    display: block; /* Tampilkan ikon hamburger */
+  }
+
+  nav.responsive ul {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  nav ul li {
+    margin: 10px 0;
+  }
+}
+
+/* === RESPONSIF SKILLS DI HP === */
+@media (max-width: 768px) {
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+    gap: 20px;
+  }
+
+  .skill-icon {
+    flex-direction: column;
+    width: auto;
+    height: auto;
+    padding: 10px;
+    background: #f8f4fc;
+    border-radius: 16px;
+    box-shadow: 0 2px 10px rgba(142, 68, 173, 0.08);
+    align-items: center;
+    justify-content: center;
+  }
+
+  .skill-icon img {
+    width: 36px;
+    height: 36px;
+    margin-bottom: 8px;
+  }
+
+ .skill-popup {
+    font-size: 0.75rem;
+    padding: 6px 12px;
+    max-width: 140px;
+    text-align: center;
+    white-space: normal;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%) translateY(10px);
+  }
 }
